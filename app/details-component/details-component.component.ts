@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import schoolData from '../schoolData.json';
+// @ts-ignore
+import CourseUtilsService from '../course-utils.service'
 
 @Component({
   selector: 'app-details-component',
@@ -16,13 +17,10 @@ export class DetailsComponentComponent implements OnInit {
 
   searchText;
 
-  students: any = schoolData.students;
+  students: any = CourseUtilsService.schoolData.students;
 
-  classes: any = schoolData.classes;
+  classes: any = CourseUtilsService.schoolData.classes;
 
-  listClassesById(studentClasses){
-    let classes = studentClasses.map(el => schoolData.classes[el.id])
-    return classes
-  };
+
   
 }

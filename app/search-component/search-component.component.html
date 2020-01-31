@@ -25,7 +25,7 @@
         <tr *ngFor="let student of students | filter: searchText">
           <td>{{ student.first }}</td>
           <td>{{ student.last }}</td>
-          <td>{{ computeGPA(student.studentClasses) }}</td>
+          <td>{{ CourseUtilsService.computeGPA(student.studentClasses) }}</td>
         </tr>
       </tbody>
     </table>

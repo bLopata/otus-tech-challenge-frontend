@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import schoolData from '../schoolData.json';
+// @ts-ignore
+import CourseUtilsService from '../course-utils.service'
 
 @Component({
   selector: 'app-search-component',
@@ -14,14 +15,6 @@ export class SearchComponentComponent implements OnInit {
   }
   title = 'Student Database';
   searchText;
-  students: any = schoolData.students;
+  students: any = CourseUtilsService.schoolData.students;
 
-  // Iterates over all enrolled classes for the student and calculates their cumulative GPA.
-  computeGPA(studentClasses){
-    let sum = studentClasses
-    .map(el => el.grade)
-    .reduce((a,b) => {return a + b}),
-    gradePointAverage = sum/studentClasses.length
-    return gradePointAverage.toFixed(2)
-}
 }
