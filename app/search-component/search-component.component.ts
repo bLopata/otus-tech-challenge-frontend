@@ -24,5 +24,4 @@ export class SearchComponentComponent implements OnInit {
     gradePointAverage = sum/studentClasses.length
     return gradePointAverage.toFixed(2)
 }
-
 }

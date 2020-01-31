@@ -21,6 +21,8 @@ export class DetailsComponentComponent implements OnInit {
   classes: any = schoolData.classes;
 
   listClassesById(studentClasses){
-    return studentClasses.map(el => schoolData.classes[el])
-  }
+    let classes = studentClasses.map(el => schoolData.classes[el.id])
+    return classes
+  };
+  
 }
