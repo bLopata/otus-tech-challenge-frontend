@@ -2,22 +2,13 @@
   <h1>{{ title }}</h1>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="search-students">
-    <input
-      class="form-control"
-      type="text"
-      name="search"
-      [(ngModel)]="searchText"
-      autocomplete="off"
-      placeholder="&#61442; Start searching for a student by first or last name."
-    />
-    </div>
     <table class="table table-striped">
       <thead>
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
+          <th>Email</th>
+          <th>Cumulative GPA</th>
           <th>Enrolled Classes</th>
         </tr>
       </thead>
@@ -31,5 +22,5 @@
         </tr>
       </tbody>
     </table>
-  </div>
+
 </div>

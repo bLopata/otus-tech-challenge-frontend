@@ -5,12 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SearchComponentComponent } from './search-component/search-component.component';
 import { DetailsComponentComponent } from './details-component/details-component.component';
-import { CourseUtilsService } from './course-utils.service';
+import { CourseUtilsService } from './services/course-utils.service';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
   declarations: [ AppComponent, SearchComponentComponent, DetailsComponentComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [CourseUtilsService]
+  providers: [CourseUtilsService, SearchService]
 })
 export class AppModule { }

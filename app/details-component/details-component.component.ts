@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // @ts-ignore
-import { CourseUtilsService } from '../course-utils.service';
+import { CourseUtilsService } from '../services/course-utils.service';
 
 @Component({
   selector: 'app-details-component',

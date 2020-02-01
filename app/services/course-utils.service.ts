@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import schoolData from './schoolData.json';
+import schoolData from '../schoolData.json';
+
+// @ts-ignore
+import { Student } from '../models/Student.ts'
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +14,8 @@ export class CourseUtilsService {
   constructor() { }
 
   public schoolData = schoolData;
+
+  public students: Student[] = schoolData.students.map(s => new Student(s))
 
   // Iterates over all enrolled classes for the student and calculates their cumulative GPA.
   computeGPA(studentClasses){
@@ -23,4 +29,6 @@ export class CourseUtilsService {
   listClassesById(studentClasses){
     return studentClasses.map(el => schoolData.classes[el.id])
   };
+
+  
 }

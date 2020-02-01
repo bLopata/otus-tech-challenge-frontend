@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 // @ts-ignore
-import { CourseUtilsService } from "../course-utils.service";
+import { CourseUtilsService } from "../services/course-utils.service";
+import { SearchService } from "../services/search.service";
 
 @Component({
   selector: "app-search-component",
@@ -8,21 +9,14 @@ import { CourseUtilsService } from "../course-utils.service";
   styleUrls: ["./search-component.component.css"]
 })
 export class SearchComponentComponent implements OnInit {
-  constructor(private courseUtils: CourseUtilsService) {}
+  constructor(
+    private courseUtils: CourseUtilsService, 
+    private search: SearchService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.search.load(this.courseUtils.students)
+  }
   title = "Student Database";
   searchText;
-  students: any = this.courseUtils.schoolData.students;
-  filteredStudents: any = this.students;
-  filterStudents() {
-    let tokens = this.searchText.split(" ")
-    if (this.searchText == "") {
-      this.filteredStudents = this.students;
-    } else {
-      this.filteredStudents = this.students.filter(s =>
-        tokens.every(t => (s.first + s.last).includes(t))
-      );
-    }
-  }
+  students: any = this.courseUtils.students;
 }
