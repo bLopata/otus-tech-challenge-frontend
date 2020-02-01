@@ -9,6 +9,7 @@
       type="text"
       name="search"
       [(ngModel)]="searchText"
+      (ngModelChange)="filterStudents()"
       autocomplete="off"
       placeholder="&#61442; Start searching for a student by first or last name."
     />
@@ -22,10 +23,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students | filter: searchText">
+        <tr *ngFor="let student of filteredStudents">
           <td>{{ student.first }}</td>
           <td>{{ student.last }}</td>
-          <td>{{ CourseUtilsService.computeGPA(student.studentClasses) }}</td>
+          <td>{{ courseUtils.computeGPA(student.studentClasses) }}</td>
         </tr>
       </tbody>
     </table>

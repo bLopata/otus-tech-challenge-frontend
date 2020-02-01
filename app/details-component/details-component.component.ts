@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // @ts-ignore
-import CourseUtilsService from '../course-utils.service'
+import { CourseUtilsService } from '../course-utils.service';
 
 @Component({
   selector: 'app-details-component',
@@ -9,7 +9,10 @@ import CourseUtilsService from '../course-utils.service'
 })
 export class DetailsComponentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private courseUtils: CourseUtilsService) { 
+  
+  }
+  
 
   ngOnInit() {
   }
@@ -17,10 +20,8 @@ export class DetailsComponentComponent implements OnInit {
 
   searchText;
 
-  students: any = CourseUtilsService.schoolData.students;
+  students: any = this.courseUtils.schoolData.students;
 
-  classes: any = CourseUtilsService.schoolData.classes;
-
-
+  classes: any = this.courseUtils.schoolData.classes;
   
 }

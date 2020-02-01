@@ -25,7 +25,9 @@
         <tr *ngFor="let student of students">
           <td>{{ student.first }}</td>
           <td>{{ student.last }}</td>
-          <td>{{ CourseUtilsService.listClassesById(student.studentClasses) }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ courseUtils.computeGPA(sstudentClasses) }}</td>
+          <td>{{ courseUtils.listClassesById(student.studentClasses) }}</td>
         </tr>
       </tbody>
     </table>
