@@ -1,12 +1,11 @@
 # otus-tech-challenge
 
 ## ToDo:
-  * Implement node.js API.
-  * Implement Angular routing.
   * search component
     * display table as URLs to student details page.
     * fix search filtering.
-    * 
+  * Implement node.js API.
+  * Implement Angular routing.
   * Containerization
   * Tests
 ### Notes

@@ -12,7 +12,6 @@ export class SearchService {
   private collection: Searchable[];
 
   search(query: String) {
-    console.log(`SearchService.search was called with ${query}`)
     this.collection.filter(i => i.isMatch(query))
   };
 

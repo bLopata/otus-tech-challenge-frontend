@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 // @ts-ignore
 import { CourseUtilsService } from "../services/course-utils.service";
-import { SearchService } from "../services/search.service";
+//@ts-ignore
+import { SearchService } from '../services/search.service.ts';
 
 @Component({
   selector: "app-search-component",
