@@ -12,7 +12,7 @@ export class SearchService {
   private collection: Searchable[];
 
   search(query: String) {
-    this.collection.filter(i => i.isMatch(query))
+    return this.collection.filter(i => i.isMatch(query))
   };
 
   load(param: Searchable[]) {

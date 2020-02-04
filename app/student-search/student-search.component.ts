@@ -9,14 +9,16 @@ import { SearchService } from '../services/search.service.ts';
   templateUrl: "./search-component.component.html",
   styleUrls: ["./search-component.component.css"]
 })
-export class SearchComponentComponent implements OnInit {
+export class StudentSearchComponent implements OnInit {
   constructor(
     private courseUtils: CourseUtilsService, 
-    private search: SearchService) {}
+    public search: SearchService) {}
 
   ngOnInit() {
     this.search.load(this.courseUtils.students)
+    this.courseUtils.students.forEach(this.courseUtils.addId(1))
   }
+  
   title = "Student Database";
   searchText;
   students: any = this.courseUtils.students;

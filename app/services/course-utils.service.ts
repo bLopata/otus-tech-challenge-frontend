@@ -29,6 +29,15 @@ export class CourseUtilsService {
   listClassesById(studentClasses){
     return studentClasses.map(el => schoolData.classes[el.id])
   };
-
+  addId(id) {
+    return function iter(o) {
+        if ('first' in o) {
+            o.student_id = id++;
+        }
+        Object.keys(o).forEach(function (k) {
+            Array.isArray(o[k]) && o[k].forEach(iter);
+        });
+    };
+}
   
 }
