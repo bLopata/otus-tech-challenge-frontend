@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router' ;
+import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 // @ts-ignore
 import { CourseUtilsService } from '../../services/course-utils.service';
-
+// @ts-ignore
+import { Student } from '../../models/Student.ts'
 
 @Component({
   selector: 'app-details-component',
@@ -11,26 +13,21 @@ import { CourseUtilsService } from '../../services/course-utils.service';
   styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
-
+  student$: Observable<Student>;
   constructor(  private route: ActivatedRoute,
   private router: Router,
-  private courseUtils: CourseUtilsService) { 
-  
+  private courseUtils: CourseUtilsService) {
   }
   
-
   ngOnInit() {  
-    let id = this.route.snapshot.paramMap.get('id');
-
-    this.students = this.courseUtils.getHero(id);
+    this.student$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.courseUtils.getStudentById(params.get('id')))
+    );
   }
   title = "Student Details";
 
-  searchText;
-
   students: any = this.courseUtils.schoolData.students;
-
-  classes: any = this.courseUtils.schoolData.classes;
 
   gotoStudents() {
     this.router.navigate(['/students']);
