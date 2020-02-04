@@ -1,36 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router' ;
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { Observable } from "rxjs";
+import { switchMap } from "rxjs/operators";
 // @ts-ignore
-import { CourseUtilsService } from '../../services/course-utils.service';
+import { CourseUtilsService } from "../../services/course-utils.service";
 // @ts-ignore
-import { Student } from '../../models/Student.ts'
+import { Student } from "../../models/Student.ts";
 
 @Component({
-  selector: 'app-details-component',
-  templateUrl: './student-details.component.html',
-  styleUrls: ['./student-details.component.css']
+  selector: "app-details-component",
+  templateUrl: "./student-details.component.html",
+  styleUrls: ["./student-details.component.css"]
 })
 export class StudentDetailsComponent implements OnInit {
   student$: Observable<Student>;
-  constructor(  private route: ActivatedRoute,
-  private router: Router,
-  private courseUtils: CourseUtilsService) {
-  }
-  
-  ngOnInit() {  
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private courseUtils: CourseUtilsService
+  ) {}
+
+  ngOnInit() {
     this.student$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.courseUtils.getStudentById(params.get('id')))
+        this.courseUtils.getStudentById(params.get("id"))
+      )
     );
   }
   title = "Student Details";
 
-  students: any = this.courseUtils.schoolData.students;
+  // students: any = this.courseUtils.schoolData.students;
 
   gotoStudents() {
-    this.router.navigate(['/students']);
-}
-  
+    this.router.navigate(["/students"]);
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import schoolData from "../schoolData.json";
 import { Observable } from "rxjs";
+import { of } from 'rxjs/observable/of';
 import { map } from "rxjs/operators";
 // @ts-ignore
 import { Student } from "../models/Student.ts";
@@ -22,13 +23,17 @@ export class CourseUtilsService {
   }
 
   listClassesById(studentClasses) {
-    return studentClasses.map(el => schoolData.classes[el.id]);
+    return studentClasses.map(el => schoolData.classes[el.id]).join(", ");
   }
 
+  getStudents(): Observable<Student[]> {
+    return of(this.students);
+  };
+
   getStudentById(id: number | string) {
-    console.log(`searching ${this.students} for ${id}`);
-    let ids = this.students.forEach(this.addId(1));
-    console.log(ids);
+    return this.getStudents().pipe(
+      map((students: Student[]) => students.find(student => student.student_id === +id))
+    );
   };
 
   addId(id) {
