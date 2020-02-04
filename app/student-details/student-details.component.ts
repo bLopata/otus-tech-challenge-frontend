@@ -7,7 +7,7 @@ import { CourseUtilsService } from '../services/course-utils.service';
   templateUrl: './details-component.component.html',
   styleUrls: ['./details-component.component.css']
 })
-export class DetailsComponentComponent implements OnInit {
+export class StudentDetailsComponent implements OnInit {
 
   constructor(private courseUtils: CourseUtilsService) { 
   

@@ -5,13 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { StudentSearchComponent } from './student-search/student-search.component';
-import { DetailsComponentComponent } from './details-component/details-component.component';
+import { StudentDetailsComponent } from './student-details/student-details.component';
 import { CourseUtilsService } from './services/course-utils.service';
 import { SearchService } from './services/search.service';
 
 const appRoutes: Routes = [
   { path: 'students', component: StudentSearchComponent },
-  { path: 'student/:id',      component: DetailsComponentComponent },
+  { path: 'student/:id',      component: StudentDetailsComponent },
   {
     path: 'students',
     component: StudentSearchComponent,
@@ -27,9 +27,8 @@ const appRoutes: Routes = [
 @NgModule({
   imports:      [  RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
     ), BrowserModule, FormsModule ],
-  declarations: [ AppComponent, StudentSearchComponent, DetailsComponentComponent ],
+  declarations: [ AppComponent, StudentSearchComponent, StudentDetailsComponent ],
   bootstrap:    [ AppComponent ],
   providers: [CourseUtilsService, SearchService]
 })
