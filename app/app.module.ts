@@ -9,6 +9,7 @@ import { StudentDetailsComponent } from "./components/student-details/student-de
 import { CourseUtilsService } from "./services/course-utils.service";
 import { FilterPipe } from "./pipes/filter.pipe";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ApiService } from './services/api.service';
 
 const appRoutes: Routes = [
   { path: "students", component: StudentSearchComponent },
@@ -32,6 +33,6 @@ const appRoutes: Routes = [
     PageNotFoundComponent
   ],
   bootstrap: [AppComponent],
-  providers: [CourseUtilsService]
+  providers: [CourseUtilsService, ApiService]
 })
 export class AppModule {}

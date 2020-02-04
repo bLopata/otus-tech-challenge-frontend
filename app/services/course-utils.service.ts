@@ -3,6 +3,7 @@ import schoolData from "../schoolData.json";
 import { Observable } from "rxjs";
 import { of } from 'rxjs/observable/of';
 import { map } from "rxjs/operators";
+import { HttpClientModule } from '@angular/common/http';
 // @ts-ignore
 import { Student } from "../models/Student.ts";
 
