@@ -11,10 +11,6 @@ export class SearchService {
 
   private collection: Searchable[];
 
-  search(query: String) {
-    return this.collection.filter(i => i.isMatch(query))
-  };
-
   load(param: Searchable[]) {
       this.collection = param;
   };

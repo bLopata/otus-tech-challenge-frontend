@@ -1,9 +1,7 @@
 //@ts-ignore
 import { Searchable } from './Searchable.ts'
-/*
 
-*/
-export class StudentClass {
+class StudentClass {
   id: Number;
   grade: Number;
 }
@@ -18,7 +16,7 @@ export class Student implements Searchable {
   last: String;
   email: String;
   studentClasses: StudentClass[];
-  isMatch(query: String): boolean {
+  studentSearch(query: String): boolean {
     let tokens = query.toLowerCase().split(" ");
     return tokens.every(w => (this.first.toLowerCase() + " " + this.last.toLowerCase()).includes(w));
   }

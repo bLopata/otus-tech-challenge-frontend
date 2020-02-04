@@ -1,3 +1,3 @@
 export interface Searchable {
-  isMatch(query: String);
+  studentSearch(query: String);
 }

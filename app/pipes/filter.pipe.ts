@@ -1,6 +1,8 @@
 import { Pipe, PipeTransform, Injectable } from "@angular/core";
 //@ts-ignore
-import { Searchable } from "./Searchable.ts";
+import { Searchable } from "../Searchable.ts";
+//@ts-ignore
+import { SearchService } from "../search.service.ts";
 
 @Pipe({
   name: "filter"
@@ -11,7 +13,6 @@ export class FilterPipe implements PipeTransform {
     if (!items) return [];
     if (!keyword) return items;
     debugger;
-
-    return items.filter(i => i.isMatch(keyword));
+    return items.filter(i => i.studentSearch(keyword));
   }
 }

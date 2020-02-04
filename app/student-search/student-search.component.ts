@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { CourseUtilsService } from "../services/course-utils.service";
+//@ts-ignore
+import { CourseUtilsService } from "../services/course-utils.service.ts";
 //@ts-ignore
 import { SearchService } from '../services/search.service.ts';
 // @ts-ignore
@@ -15,7 +16,6 @@ export class StudentSearchComponent implements OnInit {
   constructor(
     private courseUtils: CourseUtilsService, 
     private search: SearchService 
-
   ){ }
 
   ngOnInit() {
