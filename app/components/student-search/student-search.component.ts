@@ -25,7 +25,7 @@ export class StudentSearchComponent implements OnInit {
   }
 
   navigateTo(row: any) {
-    this.router.navigate(['/student/'+row.id]);
+    this.router.navigate(['/student/'+row.student_id]);
 } 
   title = "Student Database";
   searchText;

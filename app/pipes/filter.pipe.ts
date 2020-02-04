@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform, Injectable } from "@angular/core";
 //@ts-ignore
-import { Searchable } from "../Searchable.ts";
+import { Searchable } from "../Models/Searchable.ts";
 //@ts-ignore
-import { SearchService } from "../search.service.ts";
+import { SearchService } from "../services/search.service.ts";
 
 @Pipe({
   name: "filter"

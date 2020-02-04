@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router' ;
+import { switchMap } from 'rxjs/operators';
 // @ts-ignore
 import { CourseUtilsService } from '../../services/course-utils.service';
 
@@ -10,12 +12,17 @@ import { CourseUtilsService } from '../../services/course-utils.service';
 })
 export class StudentDetailsComponent implements OnInit {
 
-  constructor(private courseUtils: CourseUtilsService) { 
+  constructor(  private route: ActivatedRoute,
+  private router: Router,
+  private courseUtils: CourseUtilsService) { 
   
   }
   
 
-  ngOnInit() {
+  ngOnInit() {  
+    let id = this.route.snapshot.paramMap.get('id');
+
+    this.students = this.courseUtils.getHero(id);
   }
   title = "Student Details";
 
@@ -24,5 +31,9 @@ export class StudentDetailsComponent implements OnInit {
   students: any = this.courseUtils.schoolData.students;
 
   classes: any = this.courseUtils.schoolData.classes;
+
+  gotoStudents() {
+    this.router.navigate(['/students']);
+}
   
 }

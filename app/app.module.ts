@@ -9,7 +9,7 @@ import { StudentDetailsComponent } from "./components/student-details/student-de
 import { CourseUtilsService } from "./services/course-utils.service";
 import { SearchService } from "./services/search.service";
 import { FilterPipe } from "./pipes/filter.pipe";
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: "students", component: StudentSearchComponent },
@@ -19,8 +19,8 @@ const appRoutes: Routes = [
     component: StudentSearchComponent,
     data: { title: "Student Database" }
   },
-  { path: "", redirectTo: "/students", pathMatch: "full" }
-  //{ path: '**', component: PageNotFoundComponent }
+  { path: "", redirectTo: "/students", pathMatch: "full" },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

@@ -13,13 +13,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students">
           <td>{{ student.first }}</td>
           <td>{{ student.last }}</td>
           <td>{{ student.email }}</td>
           <td>{{ courseUtils.computeGPA(student.studentClasses) }}</td>
           <td>{{ courseUtils.listClassesById(student.studentClasses) }}</td>
-        </tr>
       </tbody>
     </table>
 

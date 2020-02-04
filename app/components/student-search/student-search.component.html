@@ -23,7 +23,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let student of students | filter : searchText; let i = index">
-          <td (click)="navigateTo(student.student_id)" class="row-hover">{{ student.first }}</td>
+          <td (click)="navigateTo(student)" class="row-hover">{{ student.first }}</td>
           <td>{{ student.last }}</td>
           <td>{{ courseUtils.computeGPA(student.studentClasses) }}</td>
         </tr>
