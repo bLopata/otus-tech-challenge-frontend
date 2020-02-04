@@ -26,7 +26,9 @@ export class CourseUtilsService {
   }
 
   getStudentById(id: number | string) {
-    return schoolData.students.foreach(this.addId(1)).find(student => student.student_id === +id)
+    console.log(`searching ${this.students} for ${id}`);
+    let ids = this.students.forEach(this.addId(1));
+    console.log(ids);
   };
 
   addId(id) {
