@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 // @ts-ignore
 import { CourseUtilsService } from '../services/course-utils.service';
 
+
 @Component({
   selector: 'app-details-component',
-  templateUrl: './details-component.component.html',
-  styleUrls: ['./details-component.component.css']
+  templateUrl: './student-details.component.html',
+  styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
 

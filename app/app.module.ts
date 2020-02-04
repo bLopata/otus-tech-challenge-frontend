@@ -8,6 +8,7 @@ import { StudentSearchComponent } from './student-search/student-search.componen
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { CourseUtilsService } from './services/course-utils.service';
 import { SearchService } from './services/search.service';
+import { FilterPipe } from './pipes/filter.pipe';
 
 const appRoutes: Routes = [
   { path: 'students', component: StudentSearchComponent },
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
   imports:      [  RouterModule.forRoot(
       appRoutes,
     ), BrowserModule, FormsModule ],
-  declarations: [ AppComponent, StudentSearchComponent, StudentDetailsComponent ],
+  declarations: [ AppComponent, StudentSearchComponent, StudentDetailsComponent, FilterPipe ],
   bootstrap:    [ AppComponent ],
   providers: [CourseUtilsService, SearchService]
 })
