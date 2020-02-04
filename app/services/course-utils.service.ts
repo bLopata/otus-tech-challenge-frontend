@@ -17,7 +17,7 @@ export class CourseUtilsService {
 
   public students: Student[] = schoolData.students.map(s => new Student(s))
 
-  // Iterates over all enrolled classes for the student and calculates their cumulative GPA.
+
   computeGPA(studentClasses){
     let sum = studentClasses
     .map(el => el.grade)
@@ -29,6 +29,7 @@ export class CourseUtilsService {
   listClassesById(studentClasses){
     return studentClasses.map(el => schoolData.classes[el.id])
   };
+  
   addId(id) {
     return function iter(o) {
         if ('first' in o) {

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router' ;
 //@ts-ignore
-import { CourseUtilsService } from "../services/course-utils.service.ts";
+import { CourseUtilsService } from "../../services/course-utils.service.ts";
 //@ts-ignore
-import { SearchService } from '../services/search.service.ts';
+import { SearchService } from '../../services/search.service.ts';
 // @ts-ignore
-import { Searchable } from '../models/Searchable.ts'
+import { Searchable } from '../../models/Searchable.ts'
 
 @Component({
   selector: "app-search-component",
