@@ -16,9 +16,9 @@ export class Student implements Searchable {
   last: String;
   email: String;
   studentClasses: StudentClass[];
-  id: number;
   studentSearch(query: String): boolean {
     let tokens = query.toLowerCase().split(" ");
     return tokens.every(w => (this.first.toLowerCase() + " " + this.last.toLowerCase()).includes(w));
-  }
+  };
+  id: number;
 }

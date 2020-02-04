@@ -6,8 +6,6 @@ import { switchMap } from 'rxjs/operators';
 import { Student } from '../../models/Student.ts'
 //@ts-ignore
 import { CourseUtilsService } from "../../services/course-utils.service.ts";
-//@ts-ignore
-import { SearchService } from '../../services/search.service.ts';
 // @ts-ignore
 import { Searchable } from '../../models/Searchable.ts'
 
@@ -21,13 +19,11 @@ export class StudentSearchComponent implements OnInit {
   selectedId: number;
   constructor(
     private courseUtils: CourseUtilsService, 
-    private search: SearchService ,
     private router: Router
   ){ }
 
   ngOnInit() {
-    this.search.load(this.courseUtils.students)
-    this.courseUtils.students.forEach(this.courseUtils.addId(1))
+    this.courseUtils.getStudents()
   }
 
   navigateTo(row: any) {
