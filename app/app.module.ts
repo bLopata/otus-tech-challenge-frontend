@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { FormsModule } from "@angular/forms";
-
+import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { StudentSearchComponent } from "./components/student-search/student-search.component";
 import { StudentDetailsComponent } from "./components/student-details/student-details.component";
@@ -10,6 +10,7 @@ import { CourseUtilsService } from "./services/course-utils.service";
 import { FilterPipe } from "./pipes/filter.pipe";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ApiService } from './services/api.service';
+import { StudentDataService } from './services/student-data.service';
 
 const appRoutes: Routes = [
   { path: "students", component: StudentSearchComponent },
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes), BrowserModule, FormsModule],
+  imports: [RouterModule.forRoot(appRoutes), BrowserModule, FormsModule, HttpClientModule],
   declarations: [
     AppComponent,
     StudentSearchComponent,
@@ -33,6 +34,6 @@ const appRoutes: Routes = [
     PageNotFoundComponent
   ],
   bootstrap: [AppComponent],
-  providers: [CourseUtilsService, ApiService]
+  providers: [CourseUtilsService, ApiService, StudentDataService]
 })
 export class AppModule {}
