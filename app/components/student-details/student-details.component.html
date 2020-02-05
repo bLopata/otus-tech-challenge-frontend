@@ -18,7 +18,7 @@
 				<td>{{ student.last }}</td>
 				<td>{{ student.email }}</td>
 				<td>{{ courseUtils.computeGPA(student.studentClasses) }}</td>
-				<td>{{ courseUtils.listClassesById(student.studentClasses) }}</td>
+				<td><pre>{{ courseUtils.listClassesById(student.studentClasses) }}</pre></td>
 			</tr>
 		</tbody>
 	</table>
