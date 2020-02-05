@@ -29,8 +29,6 @@ export class StudentDetailsComponent implements OnInit {
   }
   title = "Student Details";
 
-  // students: any = this.courseUtils.schoolData.students;
-
   gotoStudents() {
     this.router.navigate(["/students"]);
   }
