@@ -22,12 +22,8 @@ export class ApiService {
   public getAllStudents(): Observable<Student[]> {
     return this.http
       .get(uri + "/students")
-      .toPromise()
-      .then(res => res.json() as Student[])
-      .map(res => {
-        const students = res["students"];
-        console.log(`retrieving object ${res}`);
-        return students.map(student => new Student(student));
+      .map(res => {console.log(res)
+        res as Student[]
       })
       .catch(this.handleError);
   }
@@ -38,12 +34,10 @@ export class ApiService {
    * @param studentId - The id of the record to retrieve.
    * @returns A single Student Observable.
    */
-  public getStudentById(studentId: number): Observable<Student> {
+  public getStudentById(id: number): Observable<Student> {
     return this.http
-      .get(uri + "/student/" + studentId)
-      .map(res => {
-        return new Student(res.student);
-      })
+      .get(uri + "/student/" + id)
+      .map(res => {res as Student})
       .catch(this.handleError);
   }
 

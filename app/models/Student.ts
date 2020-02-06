@@ -19,6 +19,7 @@ export class Student {
   last: String;
   email: String;
   studentClasses: StudentClass[];
+  student_id: Number;
   /**
    *  Allows for searching of any combination of first and last
    *  names against the student database.
@@ -33,5 +34,5 @@ export class Student {
       (this.first.toLowerCase() + " " + this.last.toLowerCase()).includes(w)
     );
   }
-  student_id?: number;
+  
 }

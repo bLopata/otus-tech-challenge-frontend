@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
 // @ts-ignore
-import { CourseUtilsService } from "../../services/course-utils.service";
+import { ApiService } from "../../services/api.service";
 // @ts-ignore
 import { Student } from "../../models/Student.ts";
 
@@ -16,7 +16,7 @@ export class StudentDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private courseUtils: CourseUtilsService
+    private api: ApiService
   ) {}
   /**
    * Creates an Observable for the `Student` object, and gets details for that 
@@ -26,7 +26,10 @@ export class StudentDetailsComponent implements OnInit {
   ngOnInit() {
     this.student$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.courseUtils.getStudentById(params.get("id"))
+        this.api.getStudentById(params.get("id"))
+        .subscribe(student => {
+      this.student$ = student;
+    })
       )
     );
   }

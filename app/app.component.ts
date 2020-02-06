@@ -22,19 +22,10 @@ export class AppComponent implements OnInit {
    */
   students: Student[] = [];
   ngOnInit() {
-    this.courseUtils.students.forEach(this.courseUtils.addId(1));
     this.studentDataService
     .getAllStudents()
     .subscribe(students => {
       this.students = students;
     })
-    .then((students: Student[]) => {
-      this.students = students.map(student => {
-        if(!student.student_id) {
-          students.forEach(this.courseUtils.addId(1))
-        }
-        return student
-      })
-    });
   }
 }

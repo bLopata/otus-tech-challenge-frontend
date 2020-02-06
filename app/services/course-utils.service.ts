@@ -28,31 +28,6 @@ export class CourseUtilsService {
   }
 
   /**
-   * Method to add an id parameter for each student record.
-   *
-   * @param id - The start index from which to increment.
-   */
-  addId(id) {
-    return function iter(o) {
-      if ("first" in o) {
-        o.student_id = id++;
-      }
-      Object.keys(o).forEach(function(k) {
-        Array.isArray(o[k]) && o[k].forEach(iter);
-      });
-    };
-  }
-
-  /**
-   * Method to fetch the students from the input data.
-   *
-   * @returns An array of Student objects converted to Observables.
-   */
-  getStudents(): Observable<Student[]> {
-    return of(this.students);
-  }
-
-  /**
    * Returns the report card for a student mapping the numerical grade and course id
    * to a letter grade and course name.
    *
@@ -80,18 +55,5 @@ export class CourseUtilsService {
     return [courseNames, grades]
       .reduce((a, b) => b.map((v, i) => v + " - " + a[i]))
       .join("\r\n");
-  }
-
-  /**
-   * Method to fetch a single Student instance based on id.
-   *
-   * @param id - The student id corresponding to the record number.
-   */
-  getStudentById(id: number | string): Student {
-    return this.getStudents().pipe(
-      map((students: Student[]) =>
-        students.find(student => student.student_id === +id)
-      )
-    );
   }
 }
