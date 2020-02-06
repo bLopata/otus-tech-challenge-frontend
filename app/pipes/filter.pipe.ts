@@ -9,7 +9,7 @@ export class FilterPipe implements PipeTransform {
    * Method to filter results from the database based on keyword match.
    * 
    * @remarks
-   * Implements the studentSearch() method from the Student Model.
+   * Implements the `studentSearch()` method from the `Student` model.
    * 
    * @param items - The list of objects to filter.
    * @param keyword - The keyword to search against the items.

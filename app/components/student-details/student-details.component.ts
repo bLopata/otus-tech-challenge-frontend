@@ -13,16 +13,14 @@ import { Student } from "../../models/Student.ts";
   styleUrls: ["./student-details.component.css"]
 })
 export class StudentDetailsComponent implements OnInit {
-  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private courseUtils: CourseUtilsService
   ) {}
   /**
-   * Creates an Observable for the `student` object, and gets
-   * details for that student ID based on the `/:id` paramater 
-   * in the URL.
+   * Creates an Observable for the `Student` object, and gets details for that 
+   * student based on the `/:id` paramater in the URL.
    */
   student$: Observable<Student>;
   ngOnInit() {
@@ -32,8 +30,12 @@ export class StudentDetailsComponent implements OnInit {
       )
     );
   }
+
   title = "Student Details";
 
+  /**
+   * Routes back to the main page.
+   */
   gotoStudents() {
     this.router.navigate(["/students"]);
   }
