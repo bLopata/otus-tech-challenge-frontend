@@ -11,16 +11,19 @@ import { CourseUtilsService } from "../../services/course-utils.service.ts";
   styleUrls: ["./student-search.component.css"]
 })
 export class StudentSearchComponent implements OnInit {
-  selectedId: number;
   constructor(
     private courseUtils: CourseUtilsService, 
     private router: Router
   ){ }
 
-  ngOnInit() {
-    this.courseUtils.getStudents()
-  }
-
+  ngOnInit() {}
+  
+/**
+ * Routes to the corresponding /student/:id endpoint to display 
+ * full details of that student record.
+ * 
+ * @param row - The row number of the selected student.
+ */
   navigateTo(row: any) {
     this.router.navigate(['/student/'+row.student_id]);
   } 

@@ -15,12 +15,27 @@ export class CourseUtilsService {
 
   public students: Student[] = schoolData.students.map(s => new Student(s));
 
-  computeGPA(studentClasses) {
+  /**
+   * Method to compute the numerical grade point average based on the enrolled courses.
+   * @param studentClasses - Input array of courses, each containing a numerical `grade` property.
+   *
+   * @returns A string representation of a number in fixed floating-point notation.
+   */
+  computeGPA(studentClasses): String {
     let sum = studentClasses.map(el => el.grade).reduce((a, b) => a + b),
       gradePointAverage = sum / studentClasses.length;
     return gradePointAverage.toFixed(2);
   }
 
+  /**
+   * Returns the report card for a student mapping the numerical grade and course id
+   * to a letter grade and course name.
+   *
+   * @param studentClasses - The array of objects containing the students numerical grade
+   * and course id.
+   *
+   * @returns A string which has the letter grade and course name for each enrolled course.
+   */
   listClassesById(studentClasses) {
     let letterGrades = {
       4: "A",
@@ -37,7 +52,7 @@ export class CourseUtilsService {
     let grades = studentClasses
       .map(c => c["grade"])
       .map(num => letterGrades[num]);
-      
+
     let courseNames = studentClasses.map(el => schoolData.classes[el.id]);
 
     return [courseNames, grades]
@@ -45,11 +60,21 @@ export class CourseUtilsService {
       .join("\r\n");
   }
 
+  /**
+   * Method to fetch the students from the input data.
+   *
+   * @returns An array of Student objects converted to Observables.
+   */
   getStudents(): Observable<Student[]> {
     return of(this.students);
   }
 
-  getStudentById(id: number | string) {
+/**
+ * Method to fetch a single Student instance based on id.
+ * 
+ * @param id - The student id corresponding to the record number.
+ */
+  getStudentById(id: number | string): Student {
     return this.getStudents().pipe(
       map((students: Student[]) =>
         students.find(student => student.student_id === +id)

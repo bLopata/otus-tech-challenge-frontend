@@ -13,13 +13,18 @@ import { Student } from "../../models/Student.ts";
   styleUrls: ["./student-details.component.css"]
 })
 export class StudentDetailsComponent implements OnInit {
-  student$: Observable<Student>;
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private courseUtils: CourseUtilsService
   ) {}
-
+  /**
+   * Creates an Observable for the `student` object, and gets
+   * details for that student ID based on the `/:id` paramater 
+   * in the URL.
+   */
+  student$: Observable<Student>;
   ngOnInit() {
     this.student$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
