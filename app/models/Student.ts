@@ -33,5 +33,5 @@ export class Student {
       (this.first.toLowerCase() + " " + this.last.toLowerCase()).includes(w)
     );
   }
-  id: number;
+  student_id?: number;
 }

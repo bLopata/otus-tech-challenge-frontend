@@ -22,6 +22,8 @@ export class ApiService {
   public getAllStudents(): Observable<Student[]> {
     return this.http
       .get(uri + "/students")
+      .toPromise()
+      .then(res => res.json() as Student[])
       .map(res => {
         const students = res["students"];
         console.log(`retrieving object ${res}`);
@@ -40,7 +42,7 @@ export class ApiService {
     return this.http
       .get(uri + "/student/" + studentId)
       .map(res => {
-        return new Student(res.json());
+        return new Student(res.student);
       })
       .catch(this.handleError);
   }
