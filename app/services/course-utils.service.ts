@@ -7,9 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 // @ts-ignore
 import { Student } from "../models/Student.ts";
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable()
 export class CourseUtilsService {
   constructor() {}
 
@@ -37,7 +35,7 @@ export class CourseUtilsService {
     };
 
     let grades = studentClasses
-      .map(for(letc => c["grade"])
+      .map(c => c["grade"])
       .map(num => letterGrades[num]);
       
     let courseNames = studentClasses.map(el => schoolData.classes[el.id]);

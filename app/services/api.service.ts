@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw'
 // @ts-ignore
 import { Student } from "../models/Student.ts";
 
-const API_URL = "https://otus-tech-challenge.stackblitz.io/";
+const API_URL = "https://otus-tech-challenge.stackblitz.io";
 
 @Injectable()
 export class ApiService {

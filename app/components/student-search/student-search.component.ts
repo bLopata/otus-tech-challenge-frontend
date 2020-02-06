@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router' ;
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 // @ts-ignore
 import { Student } from '../../models/Student.ts'
 //@ts-ignore
 import { CourseUtilsService } from "../../services/course-utils.service.ts";
-// @ts-ignore
-import { Searchable } from '../../models/Searchable.ts'
 
 @Component({
   selector: "app-search-component",
@@ -15,7 +11,6 @@ import { Searchable } from '../../models/Searchable.ts'
   styleUrls: ["./student-search.component.css"]
 })
 export class StudentSearchComponent implements OnInit {
-  students$: Observable<Student[]>;
   selectedId: number;
   constructor(
     private courseUtils: CourseUtilsService, 

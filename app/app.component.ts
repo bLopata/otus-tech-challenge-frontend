@@ -8,7 +8,7 @@ import { Student } from "./models/Student.ts"
   selector: "my-app",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
-  providers: [StudentDataService]
+  providers: [StudentDataService, CourseUtilsService]
 })
 export class AppComponent implements OnInit {
   students: Student[] = [];
