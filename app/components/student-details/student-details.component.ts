@@ -28,9 +28,9 @@ export class StudentDetailsComponent implements OnInit {
     );
   }
   title = "Student Details";
-
-  // students: any = this.courseUtils.schoolData.students;
-
+  /**
+   * Routes back to the main page.
+   */
   gotoStudents() {
     this.router.navigate(["/students"]);
   }
