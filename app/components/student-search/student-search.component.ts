@@ -6,8 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { Student } from '../../models/Student.ts'
 //@ts-ignore
 import { CourseUtilsService } from "../../services/course-utils.service.ts";
-// @ts-ignore
-import { Searchable } from '../../models/Searchable.ts'
+
 
 @Component({
   selector: "app-search-component",
