@@ -1,6 +1,11 @@
-class StudentClass {
+export class StudentClass {
   id: Number;
   grade: Number;
+}
+
+export class Course {
+  id: String;
+  name: String;
 }
 
 /**

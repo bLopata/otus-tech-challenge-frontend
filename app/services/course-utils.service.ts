@@ -1,23 +1,23 @@
-import { Injectable } from "@angular/core";
-import schoolData from "../schoolData.json";
+import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { of } from "rxjs/observable/of";
 import { map } from "rxjs/operators";
-import { HttpClientModule } from "@angular/common/http";
 // @ts-ignore
-import { Student } from "../models/Student.ts";
+import { Student, Course } from "../models/Student.ts";
+import { StudentDataService } from "./student-data.service";
 
 @Injectable()
-export class CourseUtilsService {
-  constructor() {}
-
-  public schoolData = schoolData;
-
-  public students: Student[] = schoolData.students.map(s => new Student(s));
-
+export class CourseUtilsService implements OnInit {
+  courses: Course[];
+  constructor(private studentDataService: StudentDataService) {}
+  ngOnInit() {
+    this.studentDataService.getAllCourses().subscribe(courses => {
+      this.courses = courses;
+    });
+  }
   /**
    * Method to compute the numerical grade point average based on the enrolled courses.
-   * 
+   *
    * @param studentClasses - Input array of courses, each containing a numerical `grade` property.
    * @returns A string representation of the cumulative GPA in fixed floating-point notation.
    */
@@ -51,7 +51,7 @@ export class CourseUtilsService {
     let grades = studentClasses
       .map(c => c["grade"])
       .map(num => letterGrades[num]);
-    let courseNames = studentClasses.map(el => schoolData.classes[el.id]);
+    let courseNames = studentClasses.map(el => this.courses[el.id]);
     return [courseNames, grades]
       .reduce((a, b) => b.map((v, i) => v + " - " + a[i]))
       .join("\r\n");

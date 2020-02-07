@@ -2,11 +2,15 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { ApiService } from "./api.service";
 // @ts-ignore
-import { Student } from "../models/Student.ts";
+import { Student, Course } from "../models/Student.ts";
 
 @Injectable()
 export class StudentDataService {
   constructor(private api: ApiService) {}
+
+  getAllCourses(): Observable<Course[]> {
+    return this.api.getAllCourses();
+  }
 
   /**
    * Method to retrieve all student records from the server.

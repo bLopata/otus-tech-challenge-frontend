@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { StudentDataService } from "../../services/student-data.service";
+import {CourseUtilsService} from "../../services/course-utils.service"
 // @ts-ignore
 import { Student } from "../../models/Student.ts";
-//@ts-ignore
-import { CourseUtilsService } from "../../services/course-utils.service.ts";
 
 @Component({
   selector: "app-search-component",
@@ -11,15 +11,26 @@ import { CourseUtilsService } from "../../services/course-utils.service.ts";
   styleUrls: ["./student-search.component.css"]
 })
 export class StudentSearchComponent implements OnInit {
+  students: Student[];
+  searchText;
+  title = "Student Database";
+
   constructor(
+    private router: Router,
+    private studentDataService: StudentDataService,
     private courseUtils: CourseUtilsService,
-    private router: Router
+
   ) {}
 
-  ngOnInit() {}
-  title = "Student Database";
-  searchText;
-  students: any = this.courseUtils.students;
+  ngOnInit() {
+    this.getStudents();
+  }
+
+  getStudents(): void {
+    this.studentDataService
+      .getAllStudents()
+      .subscribe(students => (this.students = students));
+  }
 
   /**
    * Routes to the corresponding /student/:id endpoint to display
