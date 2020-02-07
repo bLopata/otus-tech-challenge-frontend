@@ -5,12 +5,12 @@
   <div class="row">
     <div class="search-students">
     <input
-      class="form-control"
+      class="form-control filter-list-input"
       type="text"
       name="search"
       [(ngModel)]="searchText"
       autocomplete="off"
-      placeholder="&#61442; Start searching for a student by first or last name."
+      placeholder="&#61442; Start searching for a student by first name, last name, or both."
     />
     </div>
     <table class="table table-striped">
@@ -22,10 +22,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students | filter: searchText">
-          <td>{{ student.first }}</td>
+        <tr *ngFor="let student of students | filter : searchText; let i = index">
+          <td (click)="navigateTo(student)" class="row-hover">{{ student.first }}</td>
           <td>{{ student.last }}</td>
-          <td>{{ computeGPA(student.studentClasses) }}</td>
+          <td>{{ courseUtils.computeGPA(student.studentClasses) }}</td>
         </tr>
       </tbody>
     </table>

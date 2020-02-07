@@ -16,3 +16,8 @@
 .form-control::placeholder  {
   font-family: FontAwesome;
 }
+
+.row-hover {
+  background-color: rgba(0, 0, 0, .05);
+  cursor: pointer;
+}
