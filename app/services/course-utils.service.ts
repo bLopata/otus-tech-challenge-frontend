@@ -84,14 +84,7 @@ export class CourseUtilsService {
     );
   }
 
-  addId(id) {
-    return function iter(o) {
-      if ("first" in o) {
-        o.student_id = id++;
-      }
-      Object.keys(o).forEach(function(k) {
-        Array.isArray(o[k]) && o[k].forEach(iter);
-      });
-    };
+  addId() : Function {
+    return ((s, i) => Object.assign(s, { student_id: i+1 }));
   }
 }

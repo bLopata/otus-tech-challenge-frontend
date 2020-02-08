@@ -7,8 +7,9 @@ import { CourseUtilsService } from "./services/course-utils.service";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
+  students = this.courseUtils.students
   constructor(private courseUtils: CourseUtilsService) {}
   ngOnInit() {
-    this.courseUtils.students.forEach(this.courseUtils.addId(1));
+    this.students.map(this.courseUtils.addId());
   }
 }
